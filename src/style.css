@@ -1,17 +1,100 @@
-div {
-  display: block;
+body {
+  font-family: "Google Sans", arial, sans-serif;
 }
 
-#city-name {
-  float: left;
+h1 {
+  color: #878787;
+  font-size: 24px;
+  font-weight: 100;
+  line-height: 28px;
+  margin-bottom: 0;
 }
 
-#search-location {
-  float: right;
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: rgb(135, 135, 135);
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 18px;
 }
 
-input[id="current-location"] {
-  font-family: FontAwesome;
-  color: #df4032;
-  text-shadow: black;
+li {
+  margin: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+li:first-letter {
+  text-transform: capitalize;
+}
+
+.weather-app-block {
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.weather-app {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 25px;
+  border: 1px solid #dadde1;
+  border-radius: 15px;
+}
+
+.WeatherToday {
+  margin: 20px 0;
+}
+
+.WeatherForecast {
+  margin: 25px 0 0;
+}
+
+.weather-icon {
+}
+
+.weather-temp strong {
+  color: rgb(33, 33, 33);
+  font-size: 60px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.weather-temp .units {
+  position: relative;
+  font-size: 16px;
+  top: -34px;
+}
+
+.weather-temp .active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+}
+
+.weather-temp .active:hover {
+  text-decoration: none;
+}
+
+.weather-conditions {
+  text-align: right;
+}
+
+.WeatherForecast {
+  margin-top: 20px;
+  text-align: center;
+  color: #000;
+}
+
+.forecast-day {
+  font-size: 16px;
+  opacity: 0.5;
+}
+
+.forecast-temp-min {
+  opacity: 0.5;
+}
+
+.forecast-temperature {
+  font-size: 13px;
 }

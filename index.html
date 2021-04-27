@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/style.css" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="src/style.css" />
     <script
       src="https://kit.fontawesome.com/6b83a30398.js"
       crossorigin="anonymous"
@@ -18,67 +18,55 @@
     <title>Vanilla Weather App</title>
   </head>
   <body>
-    <div class="root">
-      <div class="app">
-        <div class="container">
-          <div class="Weather">
-            <form>
+    <div class="container">
+      <div class="weather-app-block">
+        <div class="weather-app">
+          <form id="search-form">
               <div class="row">
-                <div class="col-6">
-                  <input type="Search" placeholder="Enter City Name" autocomplete="on" id="form-control search-input">
+                <div class="col-9">
+                  <input type="Search" placeholder="Enter City Name" autocomplete="on" class="form-control" id="search-input">
                 </div>
                 <div class="col-3 p-0">
                   <input type="Submit" id="btn btn-search w-100" value="Search">
-                </div>
-                <div class="col-3 p-0">
-                  <input type="Submit" id="btn btn-location w-100" value="&#xf276">
+                  <input type="Submit" id="btn btn-location w-100" value="📍"> 
                 </div>
               </div>
-            </form>
-            <div class="WeatherInfo">
-              <div class="row">
-                <div class="col-6">
-                  <h1>Denver</h1>
-                  <ul>
-                    <li>
-                      <span>
-                        "Tuesday"
-                        "23"
-                        ":"
-                        "06"
-                      </span>
-                      ", "
-                      "clear sky"
-                    </li>
-                    <li>
-                      "Humidity"
-                      <strong>
-                        "54"
-                        "%"
-                      </strong>
-                      ", Wind:"
-                      <strong>
-                        "3.6"
-                        "mph"
-                      </strong>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-6">
-                  <div class="temperature-container d-flex justify-content-end">
-                    <canvas width="52" height="52">
-                      <div>
-                        <span class="temperature">80</span>
-                        <span class="unit">ºF</span>
-                      </div>
-                  </div>
+          </form>
+          <div class="WeatherToday">
+            <div class="row">
+              <div class="col-6">
+                <h1 id="city">Denver</h1>
+                <ul>
+                  <li>
+                    <span id="date">
+                      Monday 23:06
+                    </span>
+                  </li>
+                  <li id="description">
+                  clear sky
+                  </li>
+                  <li>
+                    Humidity: <span id="humidity">54%</span>
+                  </li>
+                  <li>
+                    Wind: <span id="wind">3.6mph</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-6">
+                <div class="weather-temp" id="temp-block">
+                  <i class="fas fa-moon fa-3x" id="weather-icon"></i>
+                  <!--<img src="" alt="Clear" id="icon" class="float-left"/>-->
+                  <strong id="temperature">80</strong>
+                  <span class="units">ºF | ºC</span>
                 </div>
               </div>
             </div>
-            <div class="WeatherForecast row">
+          </div>
+          <div class="WeatherForecast row">
               <div class="col">
                 <div class="WeatherForecastPreview">
-                  <div class="forecast-time">Tue</div>
+                  <div class="forecast-day">Tue</div>
                   <canvas width="38" height="38">
                   <div class="forecast-temperature">
                     <span class="forecast-temp-max">58º</span>
@@ -126,15 +114,14 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <footer>
-              <a href="https://github.com/smkbolton/Vanilla-Weather-App" target="blank">
-              Open-source code</a
-              >
-              project by Bolt
-            </footer>
           </div>
         </div>
+        <footer>
+        <a href="https://github.com/smkbolton/Vanilla-Weather-App" target="blank">
+        Open-source code</a
+        >
+        project by Bolt
+        </footer>
       </div>
     </div>
   </body>

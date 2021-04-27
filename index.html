@@ -11,12 +11,131 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <script
+      src="https://kit.fontawesome.com/6b83a30398.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Vanilla Weather App</title>
   </head>
   <body>
-    <div class="container">
-      <h1>World</h1>
-      <a href="" class="btn btn-primary">Click Here</a>
+    <div class="root">
+      <div class="app">
+        <div class="container">
+          <div class="Weather">
+            <form>
+              <div class="row">
+                <div class="col-6">
+                  <input type="Search" placeholder="Enter City Name" autocomplete="on" id="form-control search-input">
+                </div>
+                <div class="col-3 p-0">
+                  <input type="Submit" id="btn btn-search w-100" value="Search">
+                </div>
+                <div class="col-3 p-0">
+                  <input type="Submit" id="btn btn-location w-100" value="&#xf276">
+                </div>
+              </div>
+            </form>
+            <div class="WeatherInfo">
+              <div class="row">
+                <div class="col-6">
+                  <h1>Denver</h1>
+                  <ul>
+                    <li>
+                      <span>
+                        "Tuesday"
+                        "23"
+                        ":"
+                        "06"
+                      </span>
+                      ", "
+                      "clear sky"
+                    </li>
+                    <li>
+                      "Humidity"
+                      <strong>
+                        "54"
+                        "%"
+                      </strong>
+                      ", Wind:"
+                      <strong>
+                        "3.6"
+                        "mph"
+                      </strong>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-6">
+                  <div class="temperature-container d-flex justify-content-end">
+                    <canvas width="52" height="52">
+                      <div>
+                        <span class="temperature">80</span>
+                        <span class="unit">ºF</span>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="WeatherForecast row">
+              <div class="col">
+                <div class="WeatherForecastPreview">
+                  <div class="forecast-time">Tue</div>
+                  <canvas width="38" height="38">
+                  <div class="forecast-temperature">
+                    <span class="forecast-temp-max">58º</span>
+                    <span class="forecast-temp-min">39º</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="WeatherForecastPreview">
+                  <div class="forecast-time">Wed</div>
+                  <canvas width="38" height="38">
+                  <div class="forecast-temperature">
+                    <span class="forecast-temp-max">57º</span>
+                    <span class="forecast-temp-min">41º</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="WeatherForecastPreview">
+                  <div class="forecast-time">Thu</div>
+                  <canvas width="38" height="38">
+                  <div class="forecast-temperature">
+                    <span class="forecast-temp-max">65º</span>
+                    <span class="forecast-temp-min">45º</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="WeatherForecastPreview">
+                  <div class="forecast-time">Fri</div>
+                  <canvas width="38" height="38">
+                  <div class="forecast-temperature">
+                    <span class="forecast-temp-max">77º</span>
+                    <span class="forecast-temp-min">52º</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="WeatherForecastPreview">
+                  <div class="forecast-time">Sat</div>
+                  <canvas width="38" height="38">
+                  <div class="forecast-temperature">
+                    <span class="forecast-temp-max">82º</span>
+                    <span class="forecast-temp-min">52º</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <footer>
+              <a href="https://github.com/smkbolton/Vanilla-Weather-App" target="blank">
+              Open-source code</a
+              >
+              project by Bolt
+            </footer>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
   <script src="src/app.js"></script>

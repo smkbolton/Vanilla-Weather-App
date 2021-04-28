@@ -1,3 +1,4 @@
+//CURRENT DATE AND TIME
 function formatDate(timestamp) {
   //calculates the date and returns it
   let date = new Date(timestamp);
@@ -24,13 +25,15 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayTemperature(response) {
+//CITY AND WEATHER INNER HTML UPDATES FROM SEARCH
+function showWeather(response) {
   let tempeartureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let dateElement = document.querySelector("#date");
+  let iconElement = document.querySelector("#icon");
 
   tempeartureElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
@@ -38,11 +41,26 @@ function displayTemperature(response) {
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-let city = "Denver";
-let units = "imperial";
-let apiKey = "2c3b195efbedc960ba063392d31bc9bd";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
+//API WEATHER USING CITY INPUT
+function citySearch(cityInput) {
+  let units = "imperial";
+  let apiKey = "2c3b195efbedc960ba063392d31bc9bd";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=${units}&appid=${apiKey}`;
+  axios.get(apiUrl).then(showWeather);
+}
 
-axios.get(apiUrl).then(displayTemperature);
+//CITY INPUT
+function clickSubmit(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#city-search-input").value;
+  citySearch(cityInput);
+}
+let searchForm = document.querySelector("#city-search-form");
+searchForm.addEventListener("submit", clickSubmit);

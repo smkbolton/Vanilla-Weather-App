@@ -23,10 +23,10 @@
     <div class="container">
       <div class="weather-app-block">
         <div class="weather-app">
-          <form id="search-form">
+          <form id="city-search-form" class="mb-3">
               <div class="row">
                 <div class="col-9">
-                  <input type="Search" placeholder="Enter City Name" autocomplete="on" class="form-control" id="search-input">
+                  <input type="Search" placeholder="Enter City Name" autocomplete="on" class="form-control" id="city-search-input">
                 </div>
                 <div class="col-3 p-0">
                   <input type="Submit" id="btn btn-search w-100" value="Search">
@@ -35,34 +35,28 @@
               </div>
           </form>
           <div class="WeatherToday">
-            <div class="row">
-              <div class="col-6">
-                <h1 id="city"></h1>
-                <ul>
-                  <li>
-                    <span id="date">
-                      Monday 23:06
-                    </span>
-                  </li>
-                  <li id="description">
-                  clear sky
-                  </li>
-                  <li>
-                    Humidity: <span id="humidity">54</span>%
-                  </li>
-                  <li>
-                    Wind: <span id="wind">3.6</span>mph
-                  </li>
-                </ul>
-              </div>
-              <div class="col-6">
-                <div class="weather-temp" id="temp-block">
-                  <i class="fas fa-moon fa-3x" id="weather-icon"></i>
-                  <!--<img src="" alt="Clear" id="icon" class="float-left"/>-->
-                  <strong id="temperature">80</strong>
-                  <span class="units">ºF | ºC</span>
+            <h1 id="city"></h1>
+            <ul>
+              <li>Last updated: <span id="date"></span></li>
+              <li id="description"></li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="clearfix weather-temp">
+                <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="Clear" id="icon" class="float-left"/>
+                <!-- <i class="fas fa-moon fa-3x" id="weather-icon"></i> -->
+                <div class="float-left" id="temp-block">
+                  <strong id="temperature" class="float-left">80</strong>
+                  <span class="units">ºF | <a href="#">ºC</a></span>
                 </div>
               </div>
+            </div>
+            <div class="col-6">
+              <ul class="float-right">
+                <li>Humidity: <span id="humidity">54</span>%</li>
+                <li>Wind: <span id="wind">3.6</span>mph</li>
+              </ul>
             </div>
           </div>
           <div class="WeatherForecast row">

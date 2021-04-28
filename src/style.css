@@ -24,7 +24,6 @@ li {
   margin: 0;
   margin-bottom: 0;
   padding: 0;
-  text-transform: capitalize;
 }
 
 li:first-letter {

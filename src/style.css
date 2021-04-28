@@ -37,13 +37,18 @@ li:first-letter {
 }
 
 .weather-app {
-  /*
-  max-width: 600px;
-  margin: 30px auto;
-  */
   padding: 25px;
   border: 1px solid #dadde1;
   border-radius: 15px;
+}
+
+.btn {
+  background-color: #dadde1;
+  border: 1px solid #dadde1;
+}
+
+.btn-location {
+  margin: 0 10px;
 }
 
 .WeatherToday {

@@ -13,10 +13,6 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <link rel="stylesheet" href="src/style.css" />
-    <script
-      src="https://kit.fontawesome.com/6b83a30398.js"
-      crossorigin="anonymous"
-    ></script>
     <title>Vanilla Weather App</title>
   </head>
   <body>
@@ -24,15 +20,33 @@
       <div class="weather-app-block">
         <div class="weather-app">
           <form id="city-search-form" class="mb-3">
-              <div class="row">
-                <div class="col-9">
-                  <input type="Search" placeholder="Enter City Name" autocomplete="on" class="form-control" id="city-search-input">
-                </div>
-                <div class="col-3 p-0">
-                  <input type="Submit" id="btn btn-search w-100" value="Search">
-                  <input type="Submit" id="btn btn-location w-100" value="📍"> 
-                </div>
+            <div class="row">
+              <div class="col-8">
+                <input
+                  type="Search"
+                  placeholder="Enter City Name"
+                  autocomplete="on"
+                  class="form-control shadow-sm"
+                  id="city-search-input"
+                />
               </div>
+              <div class="col-4 p-0">
+                <span>
+                  <input
+                    type="Submit"
+                    class="btn btn-search shadow-sm w-60"
+                    id="search-btn"
+                    value="Search"
+                  />
+                  <input
+                    type="Submit"
+                    class="btn btn-location shadow-sm"
+                    id="current-location-btn"
+                    value="📍"
+                  />
+                </span>
+              </div>
+            </div>
           </form>
           <div class="WeatherToday">
             <h1 id="city"></h1>
@@ -44,12 +58,19 @@
           <div class="row">
             <div class="col-6">
               <div class="clearfix weather-temp">
-                <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="Clear" id="icon" class="float-left"/>
+                <img
+                  src="http://openweathermap.org/img/wn/01d@2x.png"
+                  alt="Clear"
+                  id="icon"
+                  class="float-left"
+                />
                 <!-- <i class="fas fa-moon fa-3x" id="weather-icon"></i> -->
                 <div class="float-left" id="temp-block">
                   <strong id="temperature" class="float-left">80</strong>
                   <span class="units">
-                    <a href="#" id="temp-fahrenheit" class="active">ºF</a> | <a href="#" id="temp-celsius" class="active">ºC</a></span>
+                    <a href="#" id="temp-fahrenheit" class="active">ºF</a> |
+                    <a href="#" id="temp-celsius" class="active">ºC</a></span
+                  >
                 </div>
               </div>
             </div>
@@ -60,6 +81,7 @@
               </ul>
             </div>
           </div>
+          <!--
           <div class="WeatherForecast row">
               <div class="col">
                 <div class="WeatherForecastPreview">
@@ -112,12 +134,16 @@
                 </div>
               </div>
           </div>
+          -->
         </div>
         <footer>
-        <a href="https://github.com/smkbolton/Vanilla-Weather-App" target="blank">
-        Open-source code</a
-        >
-        project by Bolt
+          <a
+            href="https://github.com/smkbolton/Vanilla-Weather-App"
+            target="blank"
+          >
+            Open-source code</a
+          >
+          project by Sarah
         </footer>
       </div>
     </div>

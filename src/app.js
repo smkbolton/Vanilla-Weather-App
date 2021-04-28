@@ -27,7 +27,7 @@ function formatDate(timestamp) {
 
 //CITY AND WEATHER INNER HTML UPDATES FROM SEARCH
 function showWeather(response) {
-  let tempeartureElement = document.querySelector("#temperature");
+  let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
@@ -35,7 +35,9 @@ function showWeather(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
-  tempeartureElement.innerHTML = Math.round(response.data.main.temp);
+  tempFahrenheit = response.data.main.temp;
+
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
@@ -64,3 +66,29 @@ function clickSubmit(event) {
 }
 let searchForm = document.querySelector("#city-search-form");
 searchForm.addEventListener("submit", clickSubmit);
+
+//TEMPERATURE CONVERSIONS
+function changeToCelsius(event) {
+  event.preventDefault();
+  toCelsius.classList.add("active");
+  toFahrenheit.classList.remove("active");
+  let temperatureElement = document.querySelector("#temperature");
+  let tempCelsius = ((tempFahrenheit - 32) * 5) / 9;
+  temperatureElement.innerHTML = Math.round(tempCelsius);
+}
+
+function changeToFahrenheit(event) {
+  event.preventDefault();
+  toCelsius.classList.remove("active");
+  toFahrenheit.classList.add("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(tempFahrenheit);
+}
+
+let tempFahrenheit = null;
+
+let toCelsius = document.querySelector("#temp-celsius");
+toCelsius.addEventListener("click", changeToCelsius);
+
+let toFahrenheit = document.querySelector("#temp-fahrenheit");
+toFahrenheit.addEventListener("click", changeToFahrenheit);

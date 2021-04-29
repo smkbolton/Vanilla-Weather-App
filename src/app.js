@@ -25,8 +25,9 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-//Forecast
-function showForecast() {
+//FORECAST API DATA TO POPULATE WEEKLY FORECAST
+function showForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
 
@@ -50,7 +51,13 @@ function showForecast() {
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
+}
+
+function getForecast(coordinates) {
+  let units = "imperial";
+  let apiKey = "2c3b195efbedc960ba063392d31bc9bd";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=${units}&appid=${apiKey}`;
+  axios.get(apiUrl).then(showForecast);
 }
 
 //CITY AND WEATHER INNER HTML UPDATES FROM SEARCH
@@ -76,6 +83,8 @@ function showWeather(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 //function showForecast(response) {
@@ -90,10 +99,8 @@ function showWeather(response) {
 function citySearch(cityInput) {
   let units = "imperial";
   let apiKey = "2c3b195efbedc960ba063392d31bc9bd";
-  let apiNowUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=${units}&appid=${apiKey}`;
-  let apiLaterUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInput}&units=${units}&appid=${apiKey}`;
-  axios.get(apiNowUrl).then(showWeather);
-  axios.get(apiLaterUrl).then(showForecast);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=${units}&appid=${apiKey}`;
+  axios.get(apiUrl).then(showWeather);
 }
 
 //CITY INPUT
@@ -150,5 +157,3 @@ toCelsius.addEventListener("click", changeToCelsius);
 
 let toFahrenheit = document.querySelector("#temp-fahrenheit");
 toFahrenheit.addEventListener("click", changeToFahrenheit);
-
-showForecast();

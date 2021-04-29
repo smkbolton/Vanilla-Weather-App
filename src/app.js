@@ -25,6 +25,34 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+//Forecast
+function showForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+      <div class="forecast-day">${day}</div>
+      <img
+        src="http://openweathermap.org/img/wn/50d@2x.png"
+        alt=""
+        width="38"
+        id="forecast-icon"
+      />
+      <div class="forecast-temperature">
+        <span class="forecast-temp-max">58º</span>
+        <span class="forecast-temp-min">39º</span>
+      </div>
+    </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 //CITY AND WEATHER INNER HTML UPDATES FROM SEARCH
 function showWeather(response) {
   let temperatureElement = document.querySelector("#temperature");
@@ -50,12 +78,22 @@ function showWeather(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
+//function showForecast(response) {
+//let minTempElement = document.querySelector("#forecast-temp-min");
+//let maxTempElement = document.querySelector("#forecast-temp-max");
+
+//minTempElement.innerHTML = response.data.forecast.temperature.min;
+//maxTempElement.innerHTML = response.data.forecast.temperature.max;
+//}
+
 //API WEATHER USING CITY INPUT
 function citySearch(cityInput) {
   let units = "imperial";
   let apiKey = "2c3b195efbedc960ba063392d31bc9bd";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrl).then(showWeather);
+  let apiNowUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&units=${units}&appid=${apiKey}`;
+  let apiLaterUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInput}&units=${units}&appid=${apiKey}`;
+  axios.get(apiNowUrl).then(showWeather);
+  axios.get(apiLaterUrl).then(showForecast);
 }
 
 //CITY INPUT
@@ -112,3 +150,5 @@ toCelsius.addEventListener("click", changeToCelsius);
 
 let toFahrenheit = document.querySelector("#temp-fahrenheit");
 toFahrenheit.addEventListener("click", changeToFahrenheit);
+
+showForecast();

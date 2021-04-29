@@ -44,7 +44,7 @@ li:first-letter {
 
 .btn {
   background-color: #dadde1;
-  border: 1px solid #dadde1;
+  border: 1px solid rgb(135, 135, 135);
 }
 
 .btn-location {
@@ -53,10 +53,6 @@ li:first-letter {
 
 .WeatherToday {
   margin: 20px 0;
-}
-
-.WeatherForecast {
-  margin: 25px 0 0;
 }
 
 .weather-temp img {
@@ -85,10 +81,15 @@ li:first-letter {
   text-align: right;
 }
 
-.WeatherForecast {
+.forecast {
   margin-top: 20px;
   text-align: center;
   color: #000;
+}
+
+.daily-forecast {
+  margin: 0 10px;
+  padding: 0 10px;
 }
 
 .forecast-day {
@@ -97,6 +98,7 @@ li:first-letter {
 }
 
 .forecast-temp-min {
+  font-size: 13px;
   opacity: 0.5;
 }
 

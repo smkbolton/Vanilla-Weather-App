@@ -25,34 +25,51 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-//FORECAST API DATA TO POPULATE WEEKLY FORECAST
+//FORMATTING WEEKLY FORECAST DAYS
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[date.getDay()];
+  return day;
+}
+
+//POPULATE WEEKLY FORECAST DATA VIA API
 function showForecast(response) {
-  console.log(response.data.daily);
+  let forecastData = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
 
   let forecastHTML = `<div class="row">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-2">
-      <div class="forecast-day">${day}</div>
+  forecastData.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
+      <div class="forecast-day">${formatForecastDay(forecastDay.dt)}</div>
       <img
-        src="http://openweathermap.org/img/wn/50d@2x.png"
+        src="http://openweathermap.org/img/wn/${
+          forecastDay.weather[0].icon
+        }@2x.png"
         alt=""
         width="38"
         id="forecast-icon"
       />
       <div class="forecast-temperature">
-        <span class="forecast-temp-max">58º</span>
-        <span class="forecast-temp-min">39º</span>
+        <span class="forecast-temp-max">${Math.round(
+          forecastDay.temp.max
+        )}º</span>
+        <span class="forecast-temp-min">${Math.round(
+          forecastDay.temp.min
+        )}º</span>
       </div>
     </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
+//CALLING WEEKLY FORECAST API VIA SHOW WEATHER FUNCTION
 function getForecast(coordinates) {
   let units = "imperial";
   let apiKey = "2c3b195efbedc960ba063392d31bc9bd";
@@ -87,14 +104,6 @@ function showWeather(response) {
   getForecast(response.data.coord);
 }
 
-//function showForecast(response) {
-//let minTempElement = document.querySelector("#forecast-temp-min");
-//let maxTempElement = document.querySelector("#forecast-temp-max");
-
-//minTempElement.innerHTML = response.data.forecast.temperature.min;
-//maxTempElement.innerHTML = response.data.forecast.temperature.max;
-//}
-
 //API WEATHER USING CITY INPUT
 function citySearch(cityInput) {
   let units = "imperial";
@@ -103,7 +112,7 @@ function citySearch(cityInput) {
   axios.get(apiUrl).then(showWeather);
 }
 
-//CITY INPUT
+//COLLECTING CITY INPUT FROM EVENT LISTENER FUNCTION
 function clickSubmit(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#city-search-input").value;
@@ -123,7 +132,7 @@ function searchCoords(position) {
   axios.get(apiUrl).then(showWeather);
 }
 
-//CURRENT LOCATION IN COORDINATES
+//CURRENT LOCATION IN COORDINATES FROM EVENT LISTENER
 function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchCoords);

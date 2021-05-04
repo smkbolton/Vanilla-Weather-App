@@ -137,6 +137,7 @@ function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchCoords);
 }
+window.onload = getCurrentLocation;
 
 let currentCityBtn = document.querySelector("#current-location-btn");
 currentCityBtn.addEventListener("click", getCurrentLocation);
